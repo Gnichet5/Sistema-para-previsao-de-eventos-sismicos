@@ -1,14 +1,42 @@
-# Sistema-de-Previs-o-de-Eventos-S-smicos
-Este projeto implementa um sistema interativo para análise e previsão da ocorrência de eventos sísmicos com magnitude 6,5 ou maior em diversas regiões ao redor do mundo. Utilizando dados históricos de terremotos, o sistema permite calcular a probabilidade de ocorrência de futuros eventos sísmicos com base em um período de tempo selecionado pelo usuário.
+Sistema de Análise e Previsão de Eventos Sísmicos
 
-Funcionalidades
-Cálculo de Probabilidades: O usuário pode escolher um país ou comparar dois países para calcular a probabilidade de ocorrência de um ou mais eventos sísmicos em um intervalo de tempo especificado.
-Consulta por ID: O sistema permite a consulta de informações detalhadas sobre terremotos específicos, utilizando um identificador único (ID).
-Visualização Gráfica: Geração de gráficos para visualizar a profundidade dos abalos sísmicos ao longo do tempo em diferentes regiões.
-Interface Interativa: Interface de linha de comando que guia o usuário na escolha de países, períodos de análise, e número de eventos previstos.
-Tecnologias Utilizadas
-Python: Linguagem principal utilizada no desenvolvimento do sistema.
-Bibliotecas:
-pandas para manipulação de dados.
-numpy e scipy para cálculos estatísticos.
-matplotlib para visualização gráfica.
+Sobre o Projeto
+
+Este projeto implementa um pipeline de **Data Science e Estatística** para modelagem de risco sísmico. O sistema analisa dados históricos de terremotos (magnitude 6.5+) e utiliza modelos probabilísticos para prever a ocorrência de futuros eventos em diversas regiões do mundo.
+
+O diferencial deste projeto é a aplicação da **Distribuição de Poisson** para calcular a probabilidade de eventos raros em intervalos de tempo específicos, oferecendo uma ferramenta analítica para estudo de riscos geológicos.
+
+Objetivo
+Fornecer uma ferramenta interativa que permita a pesquisadores e entusiastas analisar padrões sísmicos globais e estimar probabilidades de risco com base em dados históricos rigorosos.
+
+## Funcionalidades
+
+*  **Modelagem Probabilística:** Cálculo da probabilidade de ocorrência de $k$ eventos em um período $t$, utilizando distribuição de Poisson baseada na taxa média histórica ($\lambda$).
+*  **Análise Comparativa:** Comparação direta de risco sísmico entre dois países ou regiões diferentes.
+*  **Consulta Detalhada:** Busca de informações específicas de terremotos históricos via ID único.
+*  **Visualização de Dados:** Geração de gráficos de dispersão (Scatter Plots) para análise da profundidade dos abalos ao longo do tempo.
+*  **Interface CLI:** Interface de linha de comando robusta e guiada para fácil interação.
+
+## Tecnologias Utilizadas
+
+* **Linguagem:** Python
+* **Manipulação de Dados:** Pandas, NumPy
+* **Estatística e Matemática:** SciPy (stats)
+* **Visualização:** Matplotlib
+
+## Fundamentação Teórica
+O sistema baseia-se na premissa de que grandes terremotos podem ser modelados como eventos de Poisson, onde a probabilidade é dada por:
+
+$$P(k \text{ eventos em } t) = \frac{e^{-\lambda t} (\lambda t)^k}{k!}$$
+
+Onde $\lambda$ é a taxa média de ocorrência histórica da região selecionada.
+
+## Estrutura do Projeto
+```bash
+├── data/               # Base de dados (CSV) de terremotos históricos
+├── src/
+│   ├── analysis.py     # Lógica de cálculo probabilístico
+│   ├── visualization.py # Geração de gráficos
+│   └── utils.py        # Funções auxiliares
+├── main.py             # Ponto de entrada da aplicação
+└── README.md           # Documentação
